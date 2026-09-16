@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>💗 A Little Something For You 💗</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Georgia, "Times New Roman", serif;
+
+    background:
+        radial-gradient(circle at 20% 20%, #ffdff0 0%, transparent 25%),
+        radial-gradient(circle at 80% 30%, #ffc5df 0%, transparent 25%),
+        linear-gradient(135deg, #ffd4e7, #ffb3d4, #f8c8dc);
+
+    color: #68364f;
+    overflow-x: hidden;
+}
+
+
+/* =====================================================
+   FLOATING EMOJIS
+===================================================== */
+
+.float {
+    position: fixed;
+    bottom: -50px;
+    pointer-events: none;
+    z-index: 1;
+
+    animation: floatUp linear infinite;
+
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(.8);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: .8;
+    }
+
+    100% {
+        transform:
+            translateY(-115vh)
+            rotate(360deg)
+            scale(1.2);
+
+        opacity: 0;
+    }
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.container {
+
+    width: min(94%, 650px);
+
+    margin: 0 auto;
+
+    padding: 35px 0 60px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+
+/* =====================================================
+   GENERATOR CARD
+===================================================== */
+
+.card {
+
+    background: rgba(255,255,255,.93);
+
+    padding: 30px;
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 20px 60px rgba(150,35,90,.25);
+
+    text-align: center;
+}
+
+.card h1 {
+
+    margin-top: 0;
+
+    color: #d63384;
+
+    font-size: 32px;
+}
+
+.subtitle {
+
+    color: #95506e;
+
+    margin-bottom: 25px;
+
+    font-size: 16px;
+}
+
+
+/* =====================================================
+   INPUTS
+===================================================== */
+
+.input {
+
+    width: 100%;
+
+    padding: 15px;
+
+    margin: 8px 0;
+
+    border: 2px solid #f2a8c8;
+
+    border-radius: 16px;
+
+    outline: none;
+
+    background: #fff;
+
+    color: #6c3150;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    transition: .2s;
+}
+
+.input:focus {
+
+    border-color: #e83e8c;
+
+    box-shadow:
+        0 0 0 4px rgba(232,62,140,.08);
+}
+
+textarea {
+
+    min-height: 180px;
+
+    resize: vertical;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+button {
+
+    width: 100%;
+
+    border: none;
+
+    padding: 15px;
+
+    margin-top: 12px;
+
+    border-radius: 22px;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+button:hover {
+
+    transform: translateY(-2px);
+
+}
+
+.generate {
+
+    background:
+        linear-gradient(
+            135deg,
+            #e83e8c,
+            #ff72ad
+        );
+
+    color: white;
+
+    box-shadow:
+        0 8px 25px rgba(232,62,140,.3);
+}
+
+.copy {
+
+    background: #ffd4e5;
+
+    color: #b3296b;
+}
+
+
+/* =====================================================
+   LINK BOX
+===================================================== */
+
+.linkBox {
+
+    margin-top: 22px;
+
+    padding: 18px;
+
+    border-radius: 18px;
+
+    background: #fff0f7;
+
+    border: 1px solid #ffc0da;
+}
+
+.linkText {
+
+    margin-top: 10px;
+
+    padding: 12px;
+
+    background: white;
+
+    border-radius: 12px;
+
+    word-break: break-all;
+
+    font-size: 12px;
+
+    color: #8b4162;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =====================================================
+   ENVELOPE
+===================================================== */
+
+.envelopeArea {
+
+    text-align: center;
+
+    padding-top: 80px;
+}
+
+.envelope {
+
+    width: min(100%, 500px);
+
+    height: 290px;
+
+    margin: auto;
+
+    position: relative;
+
+    cursor: pointer;
+}
+
+
+/* Envelope body */
+
+.envelopeBody {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: #ff70aa;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 20px 45px rgba(150,30,80,.25);
+}
+
+
+/* Envelope front triangles */
+
+.envelopeBody::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: #ff82b5;
+
+    clip-path:
+        polygon(
+            0 100%,
+            50% 42%,
+            100% 100%
+        );
+}
+
+
+/* Top flap */
+
+.flap {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 60%;
+
+    background: #ff91bd;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
+
+    transform-origin: top;
+
+    transition:
+        transform .9s ease;
+
+    z-index: 4;
+}
+
+
+/* Letter inside envelope */
+
+.insideLetter {
+
+    position: absolute;
+
+    left: 6%;
+
+    width: 88%;
+
+    height: 82%;
+
+    bottom: 5%;
+
+    background: #fffafa;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 20px rgba(100,20,50,.15);
+
+    z-index: 2;
+}
+
+
+/* Seal */
+
+.seal {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    width: 75px;
+
+    height: 75px;
+
+    border-radius: 50%;
+
+    background: #e83e8c;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 34px;
+
+    z-index: 6;
+
+    box-shadow:
+        0 8px 20px rgba(180,20,90,.3);
+
+    transition: .5s;
+}
+
+
+/* Envelope opening */
+
+.envelope.open .flap {
+
+    transform:
+        rotateX(180deg);
+
+}
+
+.envelope.open .seal {
+
+    opacity: 0;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.5);
+}
+
+
+.clickText {
+
+    margin-top: 25px;
+
+    color: #963c64;
+
+    font-weight: bold;
+
+    font-size: 17px;
+}
+
+
+/* =====================================================
+   FINAL LETTER
+===================================================== */
+
+.finalLetter {
+
+    width: 100%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffafd,
+            #fff6fa
+        );
+
+    border-radius: 25px;
+
+    padding: 35px 32px;
+
+    box-shadow:
+        0 20px 60px rgba(150,35,90,.25);
+
+    animation:
+        letterAppear .8s ease;
+
+    overflow-wrap: anywhere;
+}
+
+@keyframes letterAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(.96);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* Letter title */
+
+.finalLetter h2 {
+
+    text-align: center;
+
+    color: #d63384;
+
+    font-size: 30px;
+
+    margin-top: 0;
+
+    margin-bottom: 18px;
+}
+
+
+/* Emoji decoration */
+
+.decor {
+
+    text-align: center;
+
+    font-size: 26px;
+
+    line-height: 1.8;
+
+    margin-bottom: 20px;
+}
+
+
+/* Dear */
+
+.dear {
+
+    color: #c72d73;
+
+    font-size: 21px;
+
+    font-weight: bold;
+
+    margin-bottom: 22px;
+}
+
+
+/* Actual message */
+
+.message {
+
+    color: #63354d;
+
+    font-size: 17px;
+
+    line-height: 1.9;
+
+    white-space: pre-wrap;
+
+    word-wrap: break-word;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* Ending */
+
+.ending {
+
+    text-align: center;
+
+    margin-top: 30px;
+
+    font-size: 26px;
+
+    line-height: 1.8;
+}
+
+
+/* Sender */
+
+.from {
+
+    margin-top: 25px;
+
+    text-align: right;
+
+    color: #c02668;
+
+    font-size: 18px;
+
+    font-style: italic;
+}
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.back {
+
+    margin-top: 20px;
+
+    background: #f4dce7;
+
+    color: #8a4964;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px) {
+
+    .container {
+
+        padding: 20px 0 40px;
+    }
+
+    .card {
+
+        padding: 22px;
+    }
+
+    .card h1 {
+
+        font-size: 26px;
+    }
+
+    .envelopeArea {
+
+        padding-top: 35px;
+    }
+
+    .envelope {
+
+        height: 230px;
+    }
+
+    .finalLetter {
+
+        padding: 25px 20px;
+
+        border-radius: 20px;
+    }
+
+    .finalLetter h2 {
+
+        font-size: 24px;
+    }
+
+    .message {
+
+        font-size: 16px;
+
+        line-height: 1.8;
+    }
+
+    .dear {
+
+        font-size: 19px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     FLOATING ROMANTIC EMOJIS
+===================================================== -->
+
+<div class="float" style="left:4%;font-size:25px;animation-duration:9s;">💗</div>
+
+<div class="float" style="left:12%;font-size:20px;animation-duration:12s;">💕</div>
+
+<div class="float" style="left:22%;font-size:28px;animation-duration:8s;">🌸</div>
+
+<div class="float" style="left:32%;font-size:22px;animation-duration:11s;">💖</div>
+
+<div class="float" style="left:44%;font-size:27px;animation-duration:9s;">🌷</div>
+
+<div class="float" style="left:56%;font-size:22px;animation-duration:13s;">💞</div>
+
+<div class="float" style="left:67%;font-size:27px;animation-duration:10s;">💘</div>
+
+<div class="float" style="left:78%;font-size:20px;animation-duration:8s;">🌹</div>
+
+<div class="float" style="left:89%;font-size:27px;animation-duration:12s;">💓</div>
+
+
+<div class="container">
+
+
+<!-- =====================================================
+     GENERATOR
+===================================================== -->
+
+<div class="card" id="generator">
+
+    <h1>
+        💌 A Little Something 💌
+    </h1>
+
+    <p class="subtitle">
+        Create your secret letter for someone special
+        💗🌸💕
+    </p>
+
+
+    <input
+        class="input"
+        id="sender"
+        type="text"
+        placeholder="Your name 💕"
+    >
+
+
+    <input
+        class="input"
+        id="receiver"
+        type="text"
+        placeholder="Your special one's name 🌷"
+    >
+
+
+    <textarea
+        class="input"
+        id="message"
+        placeholder="Write your message here... 💗&#10;&#10;You can write as much as you want.&#10;Your message will appear completely inside the letter. 💌🌹"
+    ></textarea>
+
+
+    <button
+        class="generate"
+        onclick="createLink()"
+    >
+        💖 Create My Letter 💖
+    </button>
+
+
+    <div
+        class="linkBox hidden"
+        id="linkBox"
+    >
+
+        <strong>
+            ✨ Your special link is ready ✨
+        </strong>
+
+        <a
+            class="linkText"
+            id="generatedLink"
+            target="_blank"
+            rel="noopener"
+        >
+            💌 Open your romantic letter 💌
+        </a>
+
+
+        <button
+            class="copy"
+            onclick="copyLink()"
+        >
+            📋 Copy Link 💌
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     RECEIVER ENVELOPE
+===================================================== -->
+
+<div
+    class="envelopeArea hidden"
+    id="envelopeArea"
+>
+
+    <div
+        class="envelope"
+        id="envelope"
+        onclick="openLetter()"
+    >
+
+        <div class="envelopeBody"></div>
+
+        <div class="insideLetter"></div>
+
+        <div class="flap"></div>
+
+        <div class="seal">
+            💗
+        </div>
+
+    </div>
+
+
+    <div
+        class="clickText"
+        id="clickText"
+    >
+        💌 Click the envelope to open 💌
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     FINAL LETTER
+===================================================== -->
+
+<div
+    class="finalLetter hidden"
+    id="finalLetter"
+>
+
+    <h2>
+        💗 A Letter For You 💗
+    </h2>
+
+
+    <div class="decor">
+        🌸 💕 💖 🌷 💘 🌹 💞 💗
+    </div>
+
+
+    <div class="dear">
+
+        Dear
+        <span id="receiverName"></span>
+        💌
+
+    </div>
+
+
+    <div
+        class="message"
+        id="receiverMessage"
+    ></div>
+
+
+    <div class="ending">
+
+        💗✨💗✨💗
+
+        <br>
+
+        🌹 💕 🌸 💖 🌷
+
+    </div>
+
+
+    <div class="from">
+
+        — <span id="senderName"></span> 💗
+
+    </div>
+
+
+    <button
+        class="back"
+        onclick="location.href=location.pathname"
+    >
+        🌸 Close Letter
+    </button>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+
+/* =====================================================
+   ENCODE DATA
+===================================================== */
+
+function encodeData(data) {
+
+    return btoa(
+        encodeURIComponent(
+            JSON.stringify(data)
+        )
+    );
+
+}
+
+
+/* =====================================================
+   DECODE DATA
+===================================================== */
+
+function decodeData(data) {
+
+    return JSON.parse(
+        decodeURIComponent(
+            atob(data)
+        )
+    );
+
+}
+
+
+/* =====================================================
+   CREATE LINK
+===================================================== */
+
+function createLink() {
+
+    const sender =
+        document.getElementById("sender")
+        .value
+        .trim();
+
+
+    const receiver =
+        document.getElementById("receiver")
+        .value
+        .trim();
+
+
+    const message =
+        document.getElementById("message")
+        .value
+        .trim();
+
+
+    if (!sender || !receiver || !message) {
+
+        alert(
+            "Please fill in your name, their name and your message 💗"
+        );
+
+        return;
+    }
+
+
+    const data = {
+
+        s: sender,
+
+        r: receiver,
+
+        m: message
+
+    };
+
+
+    const encoded =
+        encodeData(data);
+
+
+    const linkUrl =
+        new URL(window.location.href);
+
+    linkUrl.search = "";
+    linkUrl.searchParams.set("letter", encoded);
+
+    const link =
+        linkUrl.href;
+
+
+    const generatedLink =
+        document.getElementById("generatedLink");
+
+    generatedLink.href = link;
+    generatedLink.textContent =
+        "💌 Open your romantic letter 💌";
+
+
+    document.getElementById(
+        "linkBox"
+    ).classList.remove("hidden");
+
+}
+
+
+/* =====================================================
+   COPY LINK
+===================================================== */
+
+function copyLink() {
+
+    const link =
+        document.getElementById(
+            "generatedLink"
+        ).href;
+
+
+    navigator.clipboard.writeText(link)
+
+        .then(() => {
+
+            alert(
+                "💗 Link copied! Send it to them 💌🌹"
+            );
+
+        })
+
+        .catch(() => {
+
+            prompt(
+                "Copy your special link:",
+                link
+            );
+
+        });
+
+}
+
+
+/* =====================================================
+   LOAD RECEIVER DATA
+===================================================== */
+
+function loadLetter() {
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const encoded =
+        params.get("letter");
+
+
+    if (!encoded) {
+
+        return;
+    }
+
+
+    try {
+
+        const data =
+            decodeData(encoded);
+
+
+        /* Hide generator */
+
+        document
+            .getElementById("generator")
+            .classList.add("hidden");
+
+
+        /* Show envelope */
+
+        document
+            .getElementById("envelopeArea")
+            .classList.remove("hidden");
+
+
+        /* Put data into final letter */
+
+        document
+            .getElementById("receiverName")
+            .textContent = data.r;
+
+
+        document
+            .getElementById("senderName")
+            .textContent = data.s;
+
+
+        document
+            .getElementById("receiverMessage")
+            .textContent = data.m;
+
+
+    }
+
+    catch(error) {
+
+        alert(
+            "💔 This letter link is invalid."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   OPEN ENVELOPE
+===================================================== */
+
+function openLetter() {
+
+    const envelope =
+        document.getElementById(
+            "envelope"
+        );
+
+
+    if (
+        envelope.classList.contains("open")
+    ) {
+
+        return;
+
+    }
+
+
+    envelope.classList.add("open");
+
+
+    document.getElementById(
+        "clickText"
+    ).textContent =
+        "💗 Opening your little surprise... 💗";
+
+
+    /*
+       Wait for envelope animation,
+       then completely replace it
+       with the real letter.
+    */
+
+    setTimeout(() => {
+
+        document
+            .getElementById("envelopeArea")
+            .classList.add("hidden");
+
+
+        document
+            .getElementById("finalLetter")
+            .classList.remove("hidden");
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+
+    }, 1100);
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+loadLetter();
+
+</script>
+
+</body>
+</html>
